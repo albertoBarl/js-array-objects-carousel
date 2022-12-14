@@ -3,9 +3,15 @@ const imagesArray = ["01.webp", "02.webp", "03.webp", "04.webp", "05.webp"];
 
 //Creiamo dinamicamente i div con le immagini del carosello
 let itemsContent = "";
-
 for (let i = 0; i < imagesArray.length; i++) {
   itemsContent += `<div class="item">
+        <img src="./img/${imagesArray[i]}">
+    </div>`;
+}
+
+let itemsContentSmall = "";
+for (let i = 0; i < imagesArray.length; i++) {
+  itemsContentSmall += `<div class="item-small">
         <img src="./img/${imagesArray[i]}">
     </div>`;
 }
@@ -13,6 +19,8 @@ for (let i = 0; i < imagesArray.length; i++) {
 //inseriamo le immagini nel div che le deve contenere
 const bigShow = document.querySelector(".big-show");
 bigShow.innerHTML += itemsContent;
+const slideShow = document.querySelector(".slide-show");
+slideShow.innerHTML += itemsContentSmall;
 
 const items = document.getElementsByClassName("item");
 let itemActive = 0;
@@ -38,9 +46,10 @@ function nextImg() {
     // AGGIUNGO .ACTIVE ALL'ELEMENTO SUCCESSIVO
     items[itemActive].classList.add("active");
   }
-
   if (itemActive === items.length - 1) {
     next.classList.add("hidden");
+    prev.classList.remove("hidden");
+  } else {
     prev.classList.remove("hidden");
   }
 }
@@ -58,6 +67,8 @@ function prevImg() {
 
   if (itemActive === 0) {
     prev.classList.add("hidden");
+    next.classList.remove("hidden");
+  } else {
     next.classList.remove("hidden");
   }
 }
