@@ -11,19 +11,13 @@ for (let i = 0; i < imagesArray.length; i++) {
 }
 
 //inseriamo le immagini nel div che le deve contenere
-const itemsSlider = document.querySelector(".big-show");
-itemsSlider.innerHTML += itemsContent;
+const bigShow = document.querySelector(".big-show");
+bigShow.innerHTML += itemsContent;
 
 const items = document.getElementsByClassName("item");
 let itemActive = 0;
 
 items[itemActive].classList.add("active");
-
-//rendo attivo anche il primo cerchio di navigazione
-
-const circles = document.getElementsByClassName("circle");
-
-circles[itemActive].classList.add("active");
 
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
@@ -38,13 +32,11 @@ function nextImg() {
   if (itemActive < items.length - 1) {
     // RIMUOVO .ACTIVE AGLI ELEMENTI VISIBILI
     items[itemActive].classList.remove("active");
-    circles[itemActive].classList.remove("active");
 
     itemActive++;
 
     // AGGIUNGO .ACTIVE ALL'ELEMENTO SUCCESSIVO
     items[itemActive].classList.add("active");
-    circles[itemActive].classList.add("active");
   }
 
   if (itemActive === items.length - 1) {
@@ -57,13 +49,11 @@ function prevImg() {
   if (itemActive > 0) {
     // RIMUOVO .ACTIVE AGLI ELEMENTI VISIBILI
     items[itemActive].classList.remove("active");
-    circles[itemActive].classList.remove("active");
 
     itemActive--;
 
     // AGGIUNGO .ACTIVE ALL'ELEMENTO PRECEDENTE
     items[itemActive].classList.add("active");
-    circles[itemActive].classList.add("active");
   }
 
   if (itemActive === 0) {
