@@ -73,12 +73,13 @@ function nextImg() {
     // AGGIUNGO .ACTIVE ALL'ELEMENTO SUCCESSIVO
     items[itemActive].classList.add("d-block");
     smallItems[itemActive].classList.add("enfa-images");
-  }
-  if (itemActive === items.length - 1) {
-    next.classList.add("d-none");
-    prev.classList.remove("d-none");
   } else {
-    prev.classList.remove("d-none");
+    items[itemActive].classList.remove("d-block");
+    smallItems[itemActive].classList.remove("enfa-images");
+
+    itemActive = 0;
+    items[itemActive].classList.add("d-block");
+    smallItems[itemActive].classList.add("enfa-images");
   }
 }
 
@@ -93,13 +94,13 @@ function prevImg() {
     // AGGIUNGO .ACTIVE ALL'ELEMENTO PRECEDENTE
     items[itemActive].classList.add("d-block");
     smallItems[itemActive].classList.add("enfa-images");
-  }
-
-  if (itemActive === 0) {
-    prev.classList.add("d-none");
-    next.classList.remove("d-none");
   } else {
-    next.classList.remove("d-none");
+    items[itemActive].classList.remove("d-block");
+    smallItems[itemActive].classList.remove("enfa-images");
+
+    itemActive = items.length - 1;
+    items[itemActive].classList.add("d-block");
+    smallItems[itemActive].classList.add("enfa-images");
   }
 }
 
