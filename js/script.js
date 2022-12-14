@@ -46,6 +46,7 @@ let itemsContentSmall = "";
 for (let i = 0; i < imagesArray.length; i++) {
   itemsContentSmall += `<div class="item-small">
         <img class="d-block" src="./img/${imagesArray[i].images}">
+        <div class="enfa-images"></div>
     </div>`;
 }
 
