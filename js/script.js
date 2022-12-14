@@ -1,22 +1,55 @@
-//Creo array immagini
-const imagesArray = ["01.webp", "02.webp", "03.webp", "04.webp", "05.webp"];
+// array of images
+const imagesArray = [
+  {
+    images: "01.webp",
+    title: "Spiderman",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam alias perferendis tempore possimus vel exercitationem qui.",
+  },
+  {
+    images: "02.webp",
+    title: "Ratchet and Clank",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam alias perferendis tempore possimus vel exercitationem qui.",
+  },
+  {
+    images: "03.webp",
+    title: "Fortnite",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam alias perferendis tempore possimus vel exercitationem qui.",
+  },
+  {
+    images: "04.webp",
+    title: "Il Gatto con gli Stivali",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam alias perferendis tempore possimus vel exercitationem qui.",
+  },
+  {
+    images: "05.webp",
+    title: "The Avengers",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam alias perferendis tempore possimus vel exercitationem qui.",
+  },
+];
 
-//Creiamo dinamicamente i div con le immagini del carosello
+// big-show
 let itemsContent = "";
 for (let i = 0; i < imagesArray.length; i++) {
-  itemsContent += `<div class="item">
-        <img src="./img/${imagesArray[i]}">
+  itemsContent += `<div class="item position-relative">
+        <img src="./img/${imagesArray[i].images}">
+        <p class="position-absolute bottom-0 end-0 text-white text-end m-4"><span class="fs-3">${imagesArray[i].title}</span><br>${imagesArray[i].description}</p>
     </div>`;
 }
 
+// slide-show
 let itemsContentSmall = "";
 for (let i = 0; i < imagesArray.length; i++) {
   itemsContentSmall += `<div class="item-small">
-        <img src="./img/${imagesArray[i]}">
+        <img class="d-block" src="./img/${imagesArray[i].images}">
     </div>`;
 }
 
-//inseriamo le immagini nel div che le deve contenere
+//inserted images
 const bigShow = document.querySelector(".big-show");
 bigShow.innerHTML += itemsContent;
 const slideShow = document.querySelector(".slide-show");
@@ -27,13 +60,12 @@ let itemActive = 0;
 
 items[itemActive].classList.add("active");
 
-const prev = document.querySelector(".prev");
-const next = document.querySelector(".next");
-
 // BOOTTONE "SUCCESSIVO"
+const next = document.querySelector(".next");
 next.addEventListener("click", nextImg);
 
 // BOTTONE "PRECEDENTE"
+const prev = document.querySelector(".prev");
 prev.addEventListener("click", prevImg);
 
 function nextImg() {
