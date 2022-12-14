@@ -45,8 +45,7 @@ for (let i = 0; i < imagesArray.length; i++) {
 let itemsContentSmall = "";
 for (let i = 0; i < imagesArray.length; i++) {
   itemsContentSmall += `<div class="item-small">
-        <img class="d-block" src="./img/${imagesArray[i].images}">
-        <div class="enfa-images"></div>
+  <img src="./img/${imagesArray[i].images}">
     </div>`;
 }
 
@@ -58,8 +57,51 @@ slideShow.innerHTML += itemsContentSmall;
 
 const items = document.getElementsByClassName("item");
 let itemActive = 0;
+items[itemActive].classList.add("d-block");
 
-items[itemActive].classList.add("active");
+const smallItems = document.getElementsByClassName("item-small");
+smallItems[itemActive].classList.add("enfa-images");
+
+function nextImg() {
+  if (itemActive < items.length - 1) {
+    // RIMUOVO .ACTIVE AGLI ELEMENTI VISIBILI
+    items[itemActive].classList.remove("d-block");
+    smallItems[itemActive].classList.remove("enfa-images");
+
+    itemActive++;
+
+    // AGGIUNGO .ACTIVE ALL'ELEMENTO SUCCESSIVO
+    items[itemActive].classList.add("d-block");
+    smallItems[itemActive].classList.add("enfa-images");
+  }
+  if (itemActive === items.length - 1) {
+    next.classList.add("d-none");
+    prev.classList.remove("d-none");
+  } else {
+    prev.classList.remove("d-none");
+  }
+}
+
+function prevImg() {
+  if (itemActive > 0) {
+    // RIMUOVO .ACTIVE AGLI ELEMENTI VISIBILI
+    items[itemActive].classList.remove("d-block");
+    smallItems[itemActive].classList.remove("enfa-images");
+
+    itemActive--;
+
+    // AGGIUNGO .ACTIVE ALL'ELEMENTO PRECEDENTE
+    items[itemActive].classList.add("d-block");
+    smallItems[itemActive].classList.add("enfa-images");
+  }
+
+  if (itemActive === 0) {
+    prev.classList.add("d-none");
+    next.classList.remove("d-none");
+  } else {
+    next.classList.remove("d-none");
+  }
+}
 
 // BOOTTONE "SUCCESSIVO"
 const next = document.querySelector(".next");
@@ -68,40 +110,3 @@ next.addEventListener("click", nextImg);
 // BOTTONE "PRECEDENTE"
 const prev = document.querySelector(".prev");
 prev.addEventListener("click", prevImg);
-
-function nextImg() {
-  if (itemActive < items.length - 1) {
-    // RIMUOVO .ACTIVE AGLI ELEMENTI VISIBILI
-    items[itemActive].classList.remove("active");
-
-    itemActive++;
-
-    // AGGIUNGO .ACTIVE ALL'ELEMENTO SUCCESSIVO
-    items[itemActive].classList.add("active");
-  }
-  if (itemActive === items.length - 1) {
-    next.classList.add("hidden");
-    prev.classList.remove("hidden");
-  } else {
-    prev.classList.remove("hidden");
-  }
-}
-
-function prevImg() {
-  if (itemActive > 0) {
-    // RIMUOVO .ACTIVE AGLI ELEMENTI VISIBILI
-    items[itemActive].classList.remove("active");
-
-    itemActive--;
-
-    // AGGIUNGO .ACTIVE ALL'ELEMENTO PRECEDENTE
-    items[itemActive].classList.add("active");
-  }
-
-  if (itemActive === 0) {
-    prev.classList.add("hidden");
-    next.classList.remove("hidden");
-  } else {
-    next.classList.remove("hidden");
-  }
-}
