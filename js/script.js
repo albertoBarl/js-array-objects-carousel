@@ -103,6 +103,20 @@ function prevImg() {
   }
 }
 
+// click on slideshow's images
+for (let i = 0; i < smallItems.length; i++) {
+  let thumb = smallItems[i];
+  thumb.addEventListener("click", function () {
+    items[itemActive].classList.remove("d-block");
+    smallItems[itemActive].classList.remove("enfa-images");
+
+    itemActive = i;
+
+    items[itemActive].classList.add("d-block");
+    smallItems[itemActive].classList.add("enfa-images");
+  });
+}
+
 // BOOTTONE "SUCCESSIVO"
 const next = document.querySelector(".next");
 next.addEventListener("click", nextImg);
