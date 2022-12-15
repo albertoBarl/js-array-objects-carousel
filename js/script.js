@@ -35,18 +35,18 @@ const imagesArray = [
 let itemsContent = "";
 let itemsContentSmall = "";
 
-for (let i = 0; i < imagesArray.length; i++) {
+imagesArray.forEach((elem) => {
   // big-show
   itemsContent += `<div class="item position-relative">
-    <img src="./img/${imagesArray[i].images}">
-    <p class="position-absolute bottom-0 end-0 text-white text-end m-4"><span class="fs-3">${imagesArray[i].title}</span><br>${imagesArray[i].description}</p>
+    <img src="./img/${elem.images}">
+    <p class="position-absolute bottom-0 end-0 text-white text-end m-4"><span class="fs-3">${elem.title}</span><br>${elem.description}</p>
   </div>`;
 
   // slide-show
   itemsContentSmall += `<div class="item-small">
-    <img src="./img/${imagesArray[i].images}">
+    <img src="./img/${elem.images}">
   </div>`;
-}
+});
 
 //inserted images
 const bigShow = document.querySelector(".big-show");
