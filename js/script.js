@@ -117,10 +117,10 @@ for (let i = 0; i < smallItems.length; i++) {
   });
 }
 
-// BOOTTONE "SUCCESSIVO"
+// "next" button
 const next = document.querySelector(".next");
 next.addEventListener("click", nextImg);
 
-// BOTTONE "PRECEDENTE"
+// "prev" button
 const prev = document.querySelector(".prev");
 prev.addEventListener("click", prevImg);
